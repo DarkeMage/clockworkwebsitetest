@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Inter", sans-serif;
+  --font-script: "Great Vibes", cursive;
+
+  --color-burgundy: #2D0202;
+  --color-burgundy-light: #4A0404;
+  --color-silver: #E5E7EB;
+  --color-copper: #B87333;
+  --color-brass: #8B8B4B;
+  --color-ember: #D35400;
+  --color-parchment: #F5F2ED;
+}
+
+@layer base {
+  body {
+    @apply bg-burgundy text-silver font-sans selection:bg-silver selection:text-burgundy;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif tracking-tight;
+  }
+}
+
+/* Custom scrollbar for that mechanical feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-burgundy);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-silver);
+  opacity: 0.3;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-copper);
+}
+
+.engraved-line {
+  @apply border-silver/20;
+}
+
+.script-heading {
+  @apply font-script text-silver;
+}
+
+.engraved-text {
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.8), -1px -1px 0px rgba(255,255,255,0.05);
+}
+
+@layer utilities {
+  .animate-spin-slow {
+    animation: spin 12s linear infinite;
+  }
+  .animate-spin-reverse {
+    animation: spin-reverse 15s linear infinite;
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
