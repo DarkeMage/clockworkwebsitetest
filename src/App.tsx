@@ -34,7 +34,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <motion.div whileHover={{ rotate: 90 }} transition={{ type: 'spring' }}>
             <Cog className="w-8 h-8 text-silver/40 group-hover:text-silver transition-colors" />
           </motion.div>
-          <span className="font-serif text-xl tracking-widest uppercase text-silver/80">Clockwork Mania <span className="text-silver font-bold">4013</span></span>
+          <span className="font-serif text-xl tracking-widest uppercase text-silver/80"><span className="text-silver font-bold">4013</span> Clockwork Mania</span>
         </Link>
 
         <div className="hidden lg:flex gap-8">
@@ -86,7 +86,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <footer className="px-6 md:px-24 py-12 bg-black/20 border-t border-silver/5 mt-24">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-center md:text-left">
-            <h2 className="font-script text-3xl text-silver/60">Clockwork Mania 4013</h2>
+            <h2 className="font-script text-3xl text-silver/60">4013 Clockwork Mania</h2>
             <p className="font-mono text-[10px] uppercase tracking-widest text-silver/20 mt-2">Orlando Science High School • Est. 2012</p>
           </div>
           <div className="flex gap-8 font-mono text-[10px] uppercase tracking-widest text-silver/20">
@@ -142,11 +142,11 @@ const Home = () => (
         {/* Inner Ornate Lines */}
         <div className="absolute inset-2 border border-silver/5 pointer-events-none" />
         
-        <h1 className="font-script text-6xl md:text-9xl mb-4 text-silver engraved-text">
-          Clockwork Mania
-        </h1>
-        <h2 className="font-serif text-4xl md:text-6xl tracking-[0.4em] uppercase mb-12 text-silver/80">
+        <h1 className="font-serif text-4xl md:text-6xl tracking-[0.4em] uppercase mb-4 text-silver/80">
           4013
+        </h1>
+        <h2 className="font-script text-6xl md:text-9xl mb-12 text-silver engraved-text">
+          Clockwork Mania
         </h2>
         
         <div className="flex flex-col items-center gap-8">
