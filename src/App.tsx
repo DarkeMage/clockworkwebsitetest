@@ -7,12 +7,21 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Cog, Zap, Target, Trophy, Users, ArrowRight, Hammer, Microscope, Rocket, Menu, X, Clock, FileText, DollarSign, Heart } from 'lucide-react';
+import ModelViewer from './components/ModelViewer';
 
 // --- Components ---
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [copied, setCopied] = React.useState(false);
   const location = useLocation();
+  const email = "frc4013.clockworkmania@gmail.com";
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const navItems = [
     { name: 'The Atelier', path: '/', icon: Clock },
@@ -89,7 +98,16 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <h2 className="font-script text-3xl text-silver/60">4013 Clockwork Mania</h2>
             <p className="font-mono text-[10px] uppercase tracking-widest text-silver/20 mt-2">Orlando Science High School • Est. 2012</p>
           </div>
-          <div className="flex gap-8 font-mono text-[10px] uppercase tracking-widest text-silver/20">
+          <div className="flex flex-col md:flex-row items-center gap-8 font-mono text-[10px] uppercase tracking-widest text-silver/20">
+            <button 
+              onClick={handleCopy}
+              className="hover:text-silver transition-colors relative group"
+            >
+              <span className={copied ? 'opacity-0' : 'opacity-100'}>{email}</span>
+              <span className={`absolute inset-0 flex items-center justify-center transition-opacity text-silver font-bold ${copied ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                COPIED!
+              </span>
+            </button>
             <a href="https://www.instagram.com/frc4013/?hl=en" target="_blank" rel="noopener noreferrer" className="hover:text-silver transition-colors">Instagram</a>
           </div>
         </div>
@@ -150,6 +168,11 @@ const Home = () => (
         </h2>
         
         <div className="flex flex-col items-center gap-8">
+          {/* 3D Model Viewer */}
+          <div className="w-full max-w-2xl mb-8">
+            <ModelViewer url="https://www.dropbox.com/scl/fi/50ma1g0q3ma86mkuf8ohv/Robot-Assembly-2026.gltf?rlkey=c0d5lm1gknvxui8ayly266m3e&st=az7kfhoz&raw=1" />
+          </div>
+
           {/* Central Emblem - Plague Doctor Logo */}
           <div className="w-64 h-64 rounded-full border-4 border-double border-silver/20 flex items-center justify-center relative overflow-hidden bg-black/20">
             <motion.div 
@@ -496,15 +519,6 @@ const Budget = () => (
 );
 
 const Sponsorship = () => {
-  const [copied, setCopied] = React.useState(false);
-  const email = "frc4013.clockworkmania@gmail.com";
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
     <PageTransition>
       <div className="max-w-7xl mx-auto px-6 py-12">
@@ -539,22 +553,6 @@ const Sponsorship = () => {
               </ul>
             </motion.div>
           ))}
-        </div>
-
-        <div className="mt-24 p-12 border-2 border-silver/10 text-center max-w-4xl mx-auto">
-          <h3 className="text-3xl font-serif mb-6 italic text-silver">Contact the Atelier</h3>
-          <p className="text-silver/60 mb-12 leading-relaxed">
-            For inquiries regarding sponsorship, collaboration, or community engagement, please reach out to our logistics division.
-          </p>
-          <button 
-            onClick={handleCopy}
-            className="group relative px-8 md:px-16 py-6 border border-silver/20 text-silver font-mono text-xs md:text-sm tracking-[0.2em] hover:bg-silver hover:text-burgundy transition-all overflow-hidden"
-          >
-            <span className={copied ? 'opacity-0' : 'opacity-100'}>{email}</span>
-            <span className={`absolute inset-0 flex items-center justify-center transition-opacity bg-silver text-burgundy font-bold ${copied ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-              COPIED TO CLIPBOARD
-            </span>
-          </button>
         </div>
       </div>
     </PageTransition>
