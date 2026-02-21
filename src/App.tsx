@@ -170,7 +170,7 @@ const Home = () => (
         <div className="flex flex-col items-center gap-8">
           {/* 3D Model Viewer */}
           <div className="w-full max-w-2xl mb-8">
-            <ModelViewer url="https://www.dropbox.com/scl/fi/50ma1g0q3ma86mkuf8ohv/Robot-Assembly-2026.gltf?rlkey=c0d5lm1gknvxui8ayly266m3e&st=az7kfhoz&raw=1" />
+            <ModelViewer url="https://dl.dropboxusercontent.com/scl/fi/50ma1g0q3ma86mkuf8ohv/Robot-Assembly-2026.gltf?rlkey=c0d5lm1gknvxui8ayly266m3e&st=az7kfhoz&raw=1" />
           </div>
 
           {/* Central Emblem - Plague Doctor Logo */}
